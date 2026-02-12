@@ -15,11 +15,11 @@ export function AdSlot({ size, className = "" }: { size: AdSize; className?: str
   if (size === "in-feed") {
     return (
       <div className={`my-4 ${className}`} aria-label="Sponsored content">
-        <div className="rounded-lg border border-kanote/20 bg-card p-4">
-          <span className="mb-2 inline-block rounded border border-kanote/30 bg-kanote/10 px-2 py-0.5 text-xs font-medium text-kanote">
+        <div className="rounded-lg border border-border bg-card p-4">
+          <span className="mb-2 inline-block rounded-sm bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent">
             Sponsored
           </span>
-          <div className={`${config.width} ${config.height} flex items-center justify-center rounded-md bg-secondary/50`}>
+          <div className={`${config.width} ${config.height} flex items-center justify-center rounded-md bg-muted`}>
             <p className="text-sm text-muted-foreground">Ad Space - {config.label}</p>
           </div>
         </div>
@@ -34,7 +34,7 @@ export function AdSlot({ size, className = "" }: { size: AdSize; className?: str
           Advertisement
         </span>
         <div
-          className={`${config.width} ${config.height} flex items-center justify-center rounded-md border border-kanote/20 bg-card`}
+          className={`${config.width} ${config.height} flex items-center justify-center rounded-md border border-border bg-card`}
         >
           <p className="text-xs text-muted-foreground">Ad Space - {config.label}</p>
         </div>
