@@ -5,6 +5,7 @@ import { getVideoBySlug, getRelatedVideos, formatViews, videos } from "@/lib/dat
 import { DownloadBox } from "@/components/download-box";
 import { VideoCard } from "@/components/video-card";
 import { AdSlot } from "@/components/ad-slot";
+import { KanoteCorner, KanoteBorder } from "@/components/kanote";
 
 export async function generateStaticParams() {
   return videos.map((v) => ({ slug: v.slug }));
@@ -49,8 +50,10 @@ export default async function VideoDetailPage({
       <div className="mt-4 flex flex-col gap-6 lg:flex-row">
         {/* Main content */}
         <div className="flex-1">
-          {/* Player placeholder */}
+          {/* Player placeholder with kanote corners */}
           <div className="relative aspect-video overflow-hidden rounded-xl bg-foreground">
+            <KanoteCorner position="top-left" className="absolute left-2 top-2 z-10 text-secondary/60" size={24} color="currentColor" />
+            <KanoteCorner position="top-right" className="absolute right-2 top-2 z-10 text-secondary/60" size={24} color="currentColor" />
             <Image
               src={video.thumbnail}
               alt={video.title}
@@ -60,20 +63,20 @@ export default async function VideoDetailPage({
               priority
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/90 shadow-lg">
+              <div className="flex h-20 w-20 items-center justify-center rounded-full border-2 border-secondary/40 bg-primary/90 shadow-lg">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" className="ml-1 text-primary-foreground">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </div>
             </div>
-            <span className="absolute bottom-3 right-3 rounded-md bg-foreground/80 px-2.5 py-1 text-sm font-medium text-background">
+            <span className="absolute bottom-3 right-3 rounded-md bg-foreground/80 px-2.5 py-1 text-sm font-medium text-primary-foreground">
               {video.duration}
             </span>
           </div>
 
           {/* Video info */}
           <div className="mt-4 flex flex-col gap-2">
-            <span className="w-fit rounded-md bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+            <span className="w-fit rounded border border-kanote/30 bg-kanote/10 px-3 py-1 text-xs font-semibold text-kanote">
               {video.category}
             </span>
             <h1 className="text-2xl font-bold text-foreground">{video.titleBurmese}</h1>
@@ -112,7 +115,11 @@ export default async function VideoDetailPage({
 
       {/* Related videos */}
       <section className="mt-10">
-        <h2 className="mb-4 text-lg font-bold text-foreground">Related Videos</h2>
+        <div className="mb-4 flex items-center gap-3">
+          <KanoteBorder className="w-8 text-kanote opacity-60" color="currentColor" />
+          <h2 className="text-lg font-bold text-foreground">Related Videos</h2>
+          <KanoteBorder className="flex-1 text-kanote opacity-40" color="currentColor" />
+        </div>
         <AdSlot size="leaderboard" className="mb-4 hidden md:flex" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {related.map((v) => (

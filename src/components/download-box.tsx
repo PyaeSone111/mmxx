@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { KanoteCorner } from "./kanote";
 
 const qualities = ["1080p (HD)", "720p", "480p", "360p"];
 
@@ -16,7 +17,13 @@ export function DownloadBox({ videoTitle }: { videoTitle: string }) {
   }
 
   return (
-    <div className="rounded-xl border-2 border-primary/20 bg-card p-5">
+    <div className="relative rounded-xl border-2 border-primary/30 bg-card p-5">
+      {/* Kanote corner ornaments */}
+      <KanoteCorner position="top-left" className="absolute -left-1 -top-1 text-kanote" size={24} color="currentColor" />
+      <KanoteCorner position="top-right" className="absolute -right-1 -top-1 text-kanote" size={24} color="currentColor" />
+      <KanoteCorner position="bottom-left" className="absolute -bottom-1 -left-1 text-kanote" size={24} color="currentColor" />
+      <KanoteCorner position="bottom-right" className="absolute -bottom-1 -right-1 text-kanote" size={24} color="currentColor" />
+
       <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-foreground">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -34,16 +41,16 @@ export function DownloadBox({ videoTitle }: { videoTitle: string }) {
         id="quality-select"
         value={quality}
         onChange={(e) => setQuality(e.target.value)}
-        className="mb-4 w-full rounded-lg border border-border bg-secondary px-3 py-2.5 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
+        className="mb-4 w-full rounded-lg border border-border bg-secondary/50 px-3 py-2.5 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring"
       >
         {qualities.map((q) => (
           <option key={q} value={q}>{q}</option>
         ))}
       </select>
 
-      {/* Download button */}
+      {/* Download button - kanote-styled */}
       <button
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 active:scale-[0.98]"
+        className="flex w-full items-center justify-center gap-2 rounded-lg border border-primary bg-primary px-4 py-3 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90 active:scale-[0.98]"
         aria-label={`Download ${videoTitle} in ${quality}`}
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +64,7 @@ export function DownloadBox({ videoTitle }: { videoTitle: string }) {
       {/* Copy link */}
       <button
         onClick={handleCopy}
-        className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-kanote/30 bg-kanote/5 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-kanote/10"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />

@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F0F4F8;
-  --foreground: #292735;
-  --card: #FFFFFF;
-  --card-foreground: #292735;
-  --primary: #C04F6C;
-  --primary-foreground: #FFFFFF;
-  --secondary: #E8ECF2;
-  --secondary-foreground: #292735;
-  --accent: #6A505C;
-  --accent-foreground: #FFFFFF;
-  --muted: #E2E6ED;
-  --muted-foreground: #8E8592;
-  --border: #C8CDD6;
-  --ring: #C04F6C;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
+  --background: #F5F0E8;
+  --foreground: #4F3110;
+  --card: #FFFCF5;
+  --card-foreground: #4F3110;
+  --primary: #826240;
+  --primary-foreground: #FFFCF5;
+  --secondary: #DFCFB1;
+  --secondary-foreground: #4F3110;
+  --accent: #937C66;
+  --accent-foreground: #FFFCF5;
+  --muted: #DFCFB1;
+  --muted-foreground: #937C66;
+  --border: #C9B898;
+  --ring: #826240;
+  --destructive: #B33A3A;
+  --destructive-foreground: #FFFCF5;
   --radius: 0.5rem;
 }
 
@@ -37,6 +37,8 @@
   --color-ring: var(--ring);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-kanote: #6B4E2E;
+  --color-kanote-light: #A7A099;
   --radius: var(--radius);
   --font-sans: 'Noto Sans Myanmar', 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;

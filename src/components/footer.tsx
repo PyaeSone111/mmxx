@@ -1,14 +1,19 @@
 import Link from "next/link";
+import { KanoteBorder, KanoteCorner } from "./kanote";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="bg-card">
+      {/* Top kanote border */}
+      <KanoteBorder className="text-kanote opacity-50" color="currentColor" />
+
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
           {/* Brand */}
-          <div className="max-w-xs">
+          <div className="relative max-w-xs">
+            <KanoteCorner position="top-left" className="absolute -left-2 -top-2 text-kanote opacity-60" size={24} color="currentColor" />
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-foreground">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
@@ -49,8 +54,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="mt-8 border-t border-border pt-6">
+        {/* Bottom with kanote accents */}
+        <div className="relative mt-8 border-t border-border pt-6">
+          <KanoteCorner position="bottom-left" className="absolute -bottom-1 left-0 text-kanote opacity-40" size={20} color="currentColor" />
+          <KanoteCorner position="bottom-right" className="absolute -bottom-1 right-0 text-kanote opacity-40" size={20} color="currentColor" />
           <p className="text-center text-xs text-muted-foreground">
             {'© 2026 MMXX. All rights reserved.'}
           </p>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact-form";
 import { FAQ } from "@/components/faq";
 import { AdSlot } from "@/components/ad-slot";
+import { KanoteCorner, KanoteBorder } from "@/components/kanote";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -67,15 +68,17 @@ export default function ContactPage() {
 
         {/* Sidebar */}
         <aside className="w-full lg:w-72">
-          {/* Social links */}
-          <div className="rounded-xl border border-border bg-card p-5">
+          {/* Social links with kanote frame */}
+          <div className="relative rounded-xl border border-border bg-card p-5">
+            <KanoteCorner position="top-left" className="absolute -left-1 -top-1 text-kanote" size={22} color="currentColor" />
+            <KanoteCorner position="top-right" className="absolute -right-1 -top-1 text-kanote" size={22} color="currentColor" />
             <h2 className="mb-4 text-base font-semibold text-foreground">Connect With Us</h2>
             <div className="flex flex-col gap-3">
               {socialLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-kanote/5 hover:text-foreground"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -95,9 +98,13 @@ export default function ContactPage() {
 
       {/* FAQ */}
       <section className="mt-12">
-        <h2 className="mb-6 text-center text-2xl font-bold text-foreground">
-          Frequently Asked Questions
-        </h2>
+        <div className="mb-6 flex items-center justify-center gap-3">
+          <KanoteBorder className="w-12 text-kanote opacity-60" color="currentColor" />
+          <h2 className="text-2xl font-bold text-foreground">
+            Frequently Asked Questions
+          </h2>
+          <KanoteBorder className="w-12 text-kanote opacity-60" color="currentColor" />
+        </div>
         <FAQ />
       </section>
 

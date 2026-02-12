@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { KanoteCorner } from "./kanote";
 
 const faqs = [
   {
@@ -39,12 +40,16 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="relative mx-auto max-w-2xl">
+      {/* Decorative corners on the FAQ section */}
+      <KanoteCorner position="top-left" className="absolute -left-4 -top-4 text-kanote opacity-40" size={32} color="currentColor" />
+      <KanoteCorner position="top-right" className="absolute -right-4 -top-4 text-kanote opacity-40" size={32} color="currentColor" />
+
       <div className="flex flex-col gap-3">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="rounded-xl border border-border bg-card"
+            className="rounded-lg border border-border bg-card"
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
